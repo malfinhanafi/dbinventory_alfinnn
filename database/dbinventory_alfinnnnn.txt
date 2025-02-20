@@ -1,0 +1,29 @@
+CREATE TABLE barang
+
+(
+id_barang varchar(20) PRIMARY KEY,	
+nama_barang varchar(30),	
+id_jenis varchar(20),		
+stok int,		
+Harga int	)
+
+CREATE TABLE jenis_barang
+
+(
+id_jenis varchar(20) PRIMARY KEY,	
+nama_jenis varchar(30)
+)
+
+INSERT INTO barang VALUES
+("A2112","iPhone 14","ProMax",50,20000000),
+("A2113","iPhone Mini","Pro",20,60000000),
+("A2114","iPhone 12","Pro",10,11000000),
+("A2115","iPhone 15","ProMax",5,25000000),
+("A2116","iPhone 16","ProMax",3,25000000)
+
+INSERT INTO jenis_barang VALUES
+("B111","ProMax"),
+("B112","Pro"),
+("B113","Pro"),
+("B114","ProMax"),
+("B115","ProMax")
