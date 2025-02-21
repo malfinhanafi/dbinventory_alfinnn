@@ -9,7 +9,7 @@ $harga = $_POST['harga'];
 
 include '../../config/koneksi.php';
 
-$query = mysqli_query($conn,"INSERT INTO barang Values('$id_barang','$nama_barang','$id_jenis',
+$query = mysqli_query($conn,"INSERT INTO barang VALUES('$id_barang','$nama_barang','$id_jenis',
 '$stok','$harga')");
 
 if($query){

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tambah jenis</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -16,10 +16,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="">Barang</a>
+          <a class="nav-link active" aria-current="page" href="../barang">Barang</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../jenis_barang">Jenis Barang </a>
+          <a class="nav-link" href="../jenis_barang">Jenis Barang</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,49 +44,24 @@
   </div>
 </nav>
     <div class="container">
-<h1>Data barang</h1>
-<a href="tambah.php" class="btn btn-primary" >Tambah barang <i class="fa-solid fa-plus"></i></a>
-    <table border='1'class="table table-striped">
-        <tr>
-            <th>No</th>
-            <th>ID Barang</th>
-            <th>Nama barang</th>
-            <th>ID Jenis</th>
-            <th>Stok barang</th>
-            <th>Harga</th>
-            <th>Aksi</th>
-</tr>
-<?php 
-        include '../../config/koneksi.php';
-        $query = mysqli_query($conn, "SELECT * FROM barang");
-        $no=1;
-        if(mysqli_num_rows($query)){
-            while($result=mysqli_fetch_assoc($query)){
-            ?>
-             <tr>
-                <td><?php echo $no ?></td>
-                <td><?php echo $result['id_barang'] ?></td>
-                <td><?php echo $result['nama_barang'] ?></td>
-                <td><?php echo $result['id_jenis'] ?></td>
-                <td><?php echo $result['stok'] ?></td>
-                <td><?php echo $result['harga'] ?></td>
-                <td>
-                <a href="view_edit.php?id_barang=<?php echo $result['id_barang']?>"
-                 class="btn btn-warning">  <i class="fa-solid fa-pen-to-square">
-                </i>Edit </a>
-                    <a href="hapus.php?id_barang=<?php echo $result ['id_barang']?>"
-                    onclick="return confirm ('Kamu yakin mau hapus kocak?')"
-                    class="btn btn-danger"><i class = "fa-solid fa-trash"></i>Hapus </a>
-                </td>
-            </tr>
-            <?php
-            $no++;}
-        }
-        else{
-            echo "Data Kurang";
-        }
-        ?>
-    </table>
+    <h1>Tambah jenis</h1>
+    <?php
+    $id_jenis=$_GET['id_jenis'];
+    include '../../config/koneksi.php';
+    $query=mysqli_query($conn, "SELECT * FROM jenis_barang WHERE id_jenis='$id_jenis'");
+    $result=mysqli_fetch_array($query);
+    ?>
+    <form action="proses_edit.php?id_jenis=<?php echo $result ['id_jenis']?> " method="POST">
+  <div class="mb-3">
+    <label for="exampleInputNumber1" class="form-label">Nama Jenis</label>
+    <input type="text" name="nama_jenis" class="form-control" value="<?php echo $result['nama_jenis']?>" id="exampleInputText1">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>     
+    </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
 </body>

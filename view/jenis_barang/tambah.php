@@ -45,7 +45,7 @@
 </nav>
     <div class="container">
     <h1>Tambah jenis</h1>
-    <form action="simpan.php" method="post">
+    <form action="simpan.php" method="post" >
     <div class="mb-3">
     <label for="exampleInputText1" class="form-label">ID Jenis</label>
     <input type="text" name="id_jenis" class="form-control" id="exampleInputText1">
